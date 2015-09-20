@@ -9,6 +9,17 @@ class NodesController < InheritedResources::Base
   include ConflictAnalyzer
   include ConflictHtml
 
+#########  增加更改鉴权功能  ######
+#  before_filter :check_log_in, :only => [:edit, :update,:destroy]
+########################################################
+#########  增加更改鉴权功能  ######
+#  def check_log_in
+#    authenticate_or_request_with_http_basic("Nodes") do |username,password|
+#      username == "admin" && password == "admin"
+#    end
+#  end
+########################################################
+
   def index
     raise NodeClassificationDisabledError.new if !SETTINGS.use_external_node_classification and request.format == :yaml
     scoped_index :unhidden
@@ -18,6 +29,7 @@ class NodesController < InheritedResources::Base
     define_method(action) {scoped_index :unhidden, action}
   end
 
+#################  新建Node页面方法  ######################
   def new
     new! do |format|
       format.html {
@@ -26,6 +38,7 @@ class NodesController < InheritedResources::Base
     end
   end
 
+#################  保存新建Node方法  ######################
   def create
     ActiveRecord::Base.transaction do
 
@@ -58,6 +71,8 @@ class NodesController < InheritedResources::Base
     scoped_index :hidden
   end
 
+#######   这段代码没有用到   #####
+####访问页面为http://127.0.0.1:3000/nodes/search
   def search
     @comparators = [['is', 'eq'], ['is not', 'ne'], ['>', 'gt'], ['>=', 'ge'], ['<', 'lt'], ['<=', 'le']]
     index! do |format|
@@ -71,7 +86,7 @@ class NodesController < InheritedResources::Base
       }
     end
   end
-
+###########################
   def show
     begin
       raise NodeClassificationDisabledError.new if !SETTINGS.use_external_node_classification and request.format == :yaml
@@ -90,6 +105,7 @@ class NodesController < InheritedResources::Base
     end
   end
 
+#################  编辑Node方法  ######################
   def edit
     edit! do |format|
       format.html {
@@ -98,6 +114,7 @@ class NodesController < InheritedResources::Base
     end
   end
 
+#################  保存编辑Node方法  ######################
   def update
     ActiveRecord::Base.transaction do
       old_conflicts = force_update? ? nil : get_current_conflicts(Node.find_by_id(params[:id]))

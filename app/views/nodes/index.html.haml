@@ -1,3 +1,4 @@
+/点击左侧导航栏Nodes后，右侧呈现的页面
 #sidebar= render 'shared/node_manager_sidebar'
 #main
 
@@ -8,8 +9,11 @@
         nodes
       - else
         Nodes
+        /搜索框
       = describe_search_if_present
     = render 'search'
+    /= render 'shared/search' if action_name == "index"
+    /可以同group搜索一样用shared下面的搜索程序
     %br.clear
 
   .item

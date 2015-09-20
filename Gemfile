@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rake'                , '~> 0.9.3'
 gem 'rails'               , '~> 3.2'
@@ -38,10 +38,14 @@ group :development, :test do
   gem 'nokogiri', '< 1.6' # support ruby 1.8.7
 end
 
-group :postgresql do
-  gem 'pg', '~> 0.15'
-end
+#group :postgresql do
+#  gem 'pg', '~> 0.15'
+#end
 
 group :mysql do
   gem 'mysql2', '~> 0.3.11'
 end
+
+
+#new
+gem 'slim-rails', '2.1.5' # provides slim generator, will load slim automatically

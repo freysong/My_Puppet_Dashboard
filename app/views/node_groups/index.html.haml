@@ -1,9 +1,11 @@
+/点击左侧导航栏Groups后，右侧呈现的页面
 #sidebar= render 'shared/node_manager_sidebar'
 #main
   .header
     %h2.half
       Groups
       = describe_search_if_present
+    /搜索引用，同nodes不一样
     = render 'shared/search' if action_name == "index"
     %br.clear
 

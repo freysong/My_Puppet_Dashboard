@@ -1,3 +1,4 @@
+/report-- metrics页面
 - metrics = local_assigns[:metrics]
 - values, total = metrics.partition{|metric| metric.name != "total"}
 - values = values.sort_by(&:name)

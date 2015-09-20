@@ -1,3 +1,4 @@
+/选择一个group后，点击进入的页面
 #sidebar= render 'shared/node_manager_sidebar'
 #main
   .header
@@ -15,7 +16,9 @@
 
     - unless @node_group.description.blank?
       .section.description= simple_format h(@node_group.description)
-
+    /某个group页面中Parameters项的显示内容
+    /某个group页面中Groups项的显示内容
+    /某个group页面中Classes项的显示内容
     - if SETTINGS.use_external_node_classification
       = render 'shared/variables', :resource => @node_group
     = render 'shared/groups', :resource => @node_group

@@ -1,3 +1,4 @@
+/Groups页面的搜索表单
 = form_tag request.url, :class => 'search', :method => :get do
   = text_field_tag 'q', params[:q]
   %button Search

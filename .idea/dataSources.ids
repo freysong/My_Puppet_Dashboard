@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails puppet-dashboard: production" uuid="6e8c7722-a62f-45da-810f-ea3007bcd795">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails puppet-dashboard: development" uuid="61ae294a-63f3-48a4-ae85-ab806665e71e">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails puppet-dashboard: test" uuid="ccd2996c-f982-4cee-ae21-0ed9af81de72">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
