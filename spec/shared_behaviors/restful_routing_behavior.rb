@@ -28,7 +28,7 @@
 def controller_name
   @controller_name ||= controller.class.to_s.sub('Controller', '').underscore
 end
-
+#/"a ||= b"的正确展开式应该为: "if a then a else a = b end"
 def base_url
   @base_url ||= "/#{controller_name}"
 end

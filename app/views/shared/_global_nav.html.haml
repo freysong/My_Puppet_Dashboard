@@ -14,7 +14,7 @@
         %li#navigation-nodes{:class => active_if(controller_name == "nodes" && action_name == "index")}
           = link_to "Nodes", nodes_path
         %li#navigation-groups{:class => active_if(controller_name == "node_groups")}
-          = link_to "Groups", node_groups_path
+          = link_to "Groups_test", node_groups_path
         - if SETTINGS.use_external_node_classification
           %li#navigation-classes{:class => active_if(controller_name == "node_classes")}
             = link_to "Classes", node_classes_path

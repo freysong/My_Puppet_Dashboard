@@ -1,0 +1,58 @@
+/点击左侧导航栏Groups后，右侧呈现的页面
+#sidebar= render 'shared/node_manager_sidebar'
+#main
+  .header
+    %h2.half
+      Mcop_Groups
+      = describe_search_if_present
+    /搜索引用，同nodes不一样
+    = render 'shared/search' if action_name == "index"
+    %br.clear
+
+  .item
+    - entries = NodeGroup.with_nodes_count
+    - if entries.present?
+
+      %table.main
+        %thead
+          %tr
+            %th.name{:style => 'width: 33%;'}
+              Name
+            %th.description
+              Description
+            %th.description
+              Create_Time
+            %th.mco_noop
+              mco_noop
+            %th.mco
+              mco
+
+        %tbody
+          - for node_group in entries
+            %tr[node_group]
+              %td.name
+                = link_to h(node_group.name), node_group
+              %td.description
+                = node_group.description
+              %td.created_at
+                = node_group.created_at
+              %td.mco_noop
+                /=link_to "Mco Button", send(path_for_new), :class => 'button'
+                =link_to "Mco_noop Button",:class => 'button'
+                %button NOOP
+              %td.mco
+                /=link_to "Mco Button", send(path_for_new), :class => 'button'
+                =link_to "Mco Button",:class => 'button'
+                %button MCO
+        %tfoot
+          %tr
+            %td{:colspan => 5}
+              = pagination_for entries
+    - else
+      %p
+        = describe_no_matches_for :groups
+
+    %br.clear
+
+/= render :partial => "shared/node_manager_sidebar_for_mcop2", :locals => { :type => NodeMcop }
+

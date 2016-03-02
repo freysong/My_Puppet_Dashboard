@@ -3,7 +3,7 @@
 
 .group.delayed-job
   - failures_node = {:controller => "delayed_job_failures", :action => "index"}
-  %h3= link_to "Background Tasks", failures_node
+  %h3= link_to "Background Tasks_test", failures_node
 
   - if DelayedJobFailure.unread.count > 0
     %p.failure
@@ -16,7 +16,7 @@
       %em All systems go
 
 .group
-  %h3{:class => active_if(controller_name == "nodes" && action_name == "index")}= link_to "Nodes", nodes_path
+  %h3{:class => active_if(controller_name == "nodes" && action_name == "index")}= link_to "Nodes_test", nodes_path
   /右上角帮助图标链接
   %p.help
     %a{ :href => 'http://www.baidu.com', :target => '_blank' }
@@ -61,7 +61,11 @@
     - unless SETTINGS.enable_read_only_mode || session['ACCESS_CONTROL_ROLE'] == 'READ_ONLY'
       = link_to "Add node", new_node_path, :class => 'button'
 
+= render :partial => "shared/node_manager_sidebar_for_mcop", :locals => { :type => NodeMcop }
+/= render :partial => "shared/node_manager_sidebar_for_mco", :locals => { :type => NodeGroup }
 = render :partial => "shared/node_manager_sidebar_for_type", :locals => { :type => NodeGroup }
+/= render :partial => "shared/node_manager_sidebar_for_type_test", :locals => { :type => NodeGroup }
+
 - if SETTINGS.use_external_node_classification
   = render :partial => "shared/node_manager_sidebar_for_type", :locals => { :type => NodeClass }
 

@@ -19,6 +19,24 @@ PuppetDashboard::Application.routes do
       end
     end
 
+    resources :node_groupstest do
+      member do
+        get :diff
+      end
+      collection do
+        get :search
+      end
+    end
+
+    resources :node_mcops do
+      member do
+        get :diff
+      end
+      collection do
+        get :search
+      end
+    end
+
     resources :nodes do
       member do
         put :hide

@@ -1,5 +1,4 @@
 source 'http://ruby.taobao.org/'
-#source 'gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/'
 
 gem 'rake'                , '~> 0.9.3'
 gem 'rails'               , '~> 3.2'
@@ -50,11 +49,10 @@ end
 
 #new
 gem 'slim-rails', '2.1.5' # provides slim generator, will load slim automatically
-#gem 'mcollective-client', '>= 2.8.4'
-#gem 'mcollective-common', '~> 2.8', '>= 2.8.4'
+
 ##bootstrap
 #gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
 #gem 'bourbon', '~> 3.2.4'
-#gem 'bootstrap-sass', '~> 3.3.1.0'
+gem 'bootstrap-sass', '~> 3.3.1.0'
 #gem 'font-awesome-rails', '~> 4.3.0.0'
 #gem 'twitter-bootstrap-rails'

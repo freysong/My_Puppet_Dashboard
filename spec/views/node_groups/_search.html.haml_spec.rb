@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "/node_groups/_search.html.haml" do
+describe "/node_groups/_search.html.haml_bak" do
   include NodeGroupsHelper
 
   describe "successful render" do

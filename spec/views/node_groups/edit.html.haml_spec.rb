@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "/node_groups/edit.html.haml" do
+describe "/node_groups/edit.html.haml_bak" do
   include NodeGroupsHelper
 
   describe "when successfully rendered" do

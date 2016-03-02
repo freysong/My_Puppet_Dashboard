@@ -1,0 +1,62 @@
+/侧边导航栏NodeGroup和NodeClass部分
+-# Render a sidebar section for a +type+ (e.g. NodeGroup or NodeClass).
+
+- add_body_class 'with-sidebar'
+
+/- table2 = "node_mcops"
+
+- table = type.name.tableize
+
+/NodeGroups
+/tableize除了會將單數名詞轉為複數之外，還會將駝峰式的名詞改為底線:
+/"InvoiceLine".tableize # => "invoice_lines"
+/tableize的作用其實在於幫助你找出Model的資料表名稱
+/classify則是tableize的相反，能夠幫你從資料表的名稱轉為Model:
+/"people".classify        # => "Person"
+/"invoices".classify      # => "Invoice"
+/"invoice_lines".classify # => "InvoiceLine"
+
+- label = type.name.sub(/Node/, '')
+
+/- label = "Mco"
+
+- ivar = instance_variable_get "@#{table.singularize}"
+/singularize方法則是可以幫我們轉為單數:
+/"tables".singularize    # => "table"
+
+- path_for_index = "#{table}_path"
+/- path_for_index = "node_groups_path"
+/- path_for_index = "node_groups_test_path"
+/- path_for_index = "node_mcoes_path"
+/NodeGroups_path
+
+- table2 = NodeGroup.name.tableize
+- path_for_new = "new_#{table2.singularize}_path"
+/new_NodeGroup_path
+/- path_for_show = "#{table.singularize}_path"
+- path_for_show = "#{table2.singularize}_path"
+/NodeGroup_path
+
+
+.group
+  %h3{:class => active_if(controller_name == table && action_name == "index")}= link_to(h(label), send(path_for_index))
+  /%h3{:class => active_if(controller_name == table && action_name == "index")}= link_to(h(label_test.pluralize), send("node_groups_path"))
+  /%h3{:class => active_if(controller_name == table && action_name == "index")}= link_to(h(label_test), send("node_mcoes_path"))
+
+
+  /pluralize方法可以幫我們將名詞字串轉為複數的名詞:
+  /"table".pluralize     # => "tables"
+
+  /显示组名和节点个数
+  /- entries = type.with_nodes_count
+  - entries = NodeGroup.with_nodes_count
+  - unless entries.empty?
+    %ul
+      - for entry in entries
+        %li{:class => active_if(controller_name == table && ivar && ivar == entry)}
+          = link_to h(entry.name), send(path_for_show, entry)
+          %span.count= entry.nodes_count
+  .footer.actionbar
+    /添加ADD GROUP , CLASS 的button
+    - unless SETTINGS.enable_read_only_mode || session['ACCESS_CONTROL_ROLE'] == 'READ_ONLY'
+      = link_to "Add #{h(label.downcase)} group", send(path_for_new), :class => 'button'
