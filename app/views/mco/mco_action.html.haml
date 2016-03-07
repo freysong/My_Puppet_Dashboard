@@ -1,0 +1,18 @@
+#sidebar= render 'shared/node_manager_sidebar'
+#main
+  .header
+    %h2.half
+      Mco ACTION Status
+      = describe_search_if_present
+    /搜索引用，同nodes不一样
+    = render 'shared/search' if action_name == "mco_action"
+    %br.clear
+
+    /%strong{:class => "code", :id => "message"} Mco Status!
+
+    %p
+    = @file
+    %p
+    = @file_action
+
+    %br.clear

@@ -1,12 +1,5 @@
 class NodeMcopsController < InheritedResources::Base
 
-  respond_to :html, :json
-  before_filter :raise_if_enable_read_only_mode, :only => [:new, :edit, :create, :update, :destroy]
-
-  include SearchableIndex
-  include ConflictAnalyzer
-  include ConflictHtml
-
   def new
     new! do |format|
       format.html {
@@ -56,50 +49,6 @@ class NodeMcopsController < InheritedResources::Base
         }
       end
     end
-  end
-
-  def edit
-    edit! do |format|
-      format.html {
-        set_node_autocomplete_data_sources(@node_group)
-        set_group_and_class_autocomplete_data_sources(@node_group)
-      }
-    end
-  end
-
-  def update
-    ActiveRecord::Base.transaction do
-      old_conflicts = force_update? ? nil : get_current_conflicts(NodeGroup.find_by_id(params[:id]))
-
-      update! do |success, failure|
-        success.html {
-          update_success_helper old_conflicts, :class => NodeGroup, :conflict_attribute => nil
-        };
-
-        failure.html {
-          node_group = NodeGroup.find_by_id(params[:id])
-
-          set_node_autocomplete_data_sources(node_group)
-          set_group_and_class_autocomplete_data_sources(node_group)
-          html = render_to_string(:template => "shared/_error",
-                                  :layout => false,
-                                  :locals => { :object_name => 'node_group', :object => node_group })
-          render :json => { :status => "error", :error_html => html }, :content_type => 'application/json'
-        }
-      end
-    end
-  end
-
-  def destroy
-    destroy_helper  :class => NodeGroup,
-                    :owner_class => NodeGroup,
-                    :index_redirect => true
-  end
-
-  protected
-
-  def resource
-    get_resource_ivar || set_resource_ivar(end_of_association_chain.find_by_id_or_name!(params[:id]))
   end
 
 end

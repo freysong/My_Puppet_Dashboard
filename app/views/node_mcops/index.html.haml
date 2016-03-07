@@ -11,6 +11,10 @@
 
   .item
     - entries = NodeGroup.with_nodes_count
+    - table2 = NodeGroup.name.tableize
+    - path_for_new = "new_#{table2.singularize}_path"
+    - mco_noop_path = "mco/mco_noop"
+    - mco_action_path = "mco/mco_action"
     - if entries.present?
 
       %table.main
@@ -38,12 +42,15 @@
                 = node_group.created_at
               %td.mco_noop
                 /=link_to "Mco Button", send(path_for_new), :class => 'button'
-                =link_to "Mco_noop Button",:class => 'button'
-                %button NOOP
+                =link_to "NOOP ACTION",mco_noop_path,:confirm => "Do You Want To RUN NOOP Action?",:class => 'button'
+                /%button NOOP
               %td.mco
                 /=link_to "Mco Button", send(path_for_new), :class => 'button'
-                =link_to "Mco Button",:class => 'button'
-                %button MCO
+                /=link_to "Mco Button",send(path_for_new),:confirm => "Are you sure?",:class => 'button'
+                /=button_to "MCO",node_mcops_path,:confirm => "Are you sure?",:class => 'button'
+                =link_to "MCO ACTION",mco_action_path,:confirm => "Attention!! Do You Want To RUN MCO Action?",:class => 'button'
+
+        /%button MCO
         %tfoot
           %tr
             %td{:colspan => 5}
