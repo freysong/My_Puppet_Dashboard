@@ -84,6 +84,7 @@ PuppetDashboard::Application.routes do
   match 'reports/upload'  => 'reports#upload', :via => :post
   match 'release_notes'   => 'pages#release_notes', :via => :get
   match '/delayed_job_failures/read_all' => 'delayed_job_failures#read_all', :via => :post
+  match 'mcostatus/hello'   => 'mcostatus#hello', :via => :get
 
   get 'radiator(.:format)' => 'radiator#index'
 

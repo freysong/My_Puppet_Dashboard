@@ -1,0 +1,19 @@
+#sidebar= render 'shared/node_manager_sidebar'
+#main
+  .header
+    %h2.half
+      Mco ACTION Status
+      = describe_search_if_present
+    /搜索引用，同nodes不一样
+    = render 'shared/search' if action_name == "mco_action_status"
+
+    %br.clear
+    %strong{:class => "code", :id => "message"} MCO ACTION STATUS!
+
+    - mco_action_status_path = "mco_action_status"
+    =link_to "Refresh Action Status",mco_action_status_path,:class => 'button'
+
+    - @mco_action_status.each_line do |mco_action_status|
+      %p= mco_action_status
+
+    %br.clear

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "/node_classes/show.html.haml_bak" do
+describe "/node_classes/show.html.haml" do
   include NodeClassesHelper
 
   describe "successful render" do

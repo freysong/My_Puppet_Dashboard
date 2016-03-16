@@ -7,17 +7,7 @@
     /搜索引用，同nodes不一样
     = render 'shared/search' if action_name == "hello"
     %br.clear
+    - hello_status_path = "hello_status"
+    =link_to "HELLO STATUS",hello_status_path,:class => 'button'
 
-    %strong{:class => "code", :id => "message"} Mco Status!
-    %p
-    = @file2
-    %p
-    = @file
-    %p
-    = @file3
-    %p
-    = @file4
-    %p
-    = @cat.class
-
-    %br.clear
+    %strong{:class => "code", :id => "message"} Hello Status!

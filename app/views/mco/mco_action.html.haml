@@ -7,12 +7,11 @@
     /搜索引用，同nodes不一样
     = render 'shared/search' if action_name == "mco_action"
     %br.clear
+    - mco_action_status_path = "mco_action_status"
+    =link_to "MCO ACTION STATUS",mco_action_status_path,:class => 'button'
 
-    /%strong{:class => "code", :id => "message"} Mco Status!
+    %strong{:class => "code", :id => "message"} Mco Status!
 
-    %p
-    = @file
-    %p
-    = @file_action
+    /= render 'mco/mco_action_status'
 
     %br.clear

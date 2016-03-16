@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "/reports/show.html.haml_bak" do
+describe "/reports/show.html.haml" do
   include ReportsHelper
 
   describe "successful render" do

@@ -7,17 +7,9 @@
     /搜索引用，同nodes不一样
     = render 'shared/search' if action_name == "mco_noop"
     %br.clear
+    - mco_noop_status_path = "mco_noop_status"
+    =link_to "MCO NOOP STATUS",mco_noop_status_path,:class => 'button'
 
-    %strong{:class => "code", :id => "message"} Mco Status!
-    %p
-    = @file2
-    %p
-    = @file
-    %p
-    = @file3
-    %p
-    = @file4
-    %p
-    = @cat.class
+    %strong{:class => "code", :id => "message"} Mco Noop Status!
 
     %br.clear

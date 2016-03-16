@@ -1,0 +1,19 @@
+#sidebar= render 'shared/node_manager_sidebar'
+#main
+  .header
+    %h2.half
+      Mco NOOP Status
+      = describe_search_if_present
+    /搜索引用，同nodes不一样
+    = render 'shared/search' if action_name == "mco_noop_status"
+    %br.clear
+
+    %strong{:class => "code", :id => "message"} MCO NOOP STATUS!
+
+    - mco_noop_status_path = "mco_noop_status"
+    =link_to "Refresh Mco Noop Status",mco_noop_status_path,:class => 'button'
+
+    - @mco_noop_status.each_line do |hello_status|
+      %p= hello_status
+
+    %br.clear

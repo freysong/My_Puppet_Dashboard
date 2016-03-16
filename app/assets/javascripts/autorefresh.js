@@ -8,7 +8,7 @@ jQuery(function($) {
       $('span#autorefresh_countdown').html('&hellip;');
       $('li#navigation-autorefresh input').prop('disabled', true);
     } else if (this.checked) {
-      var refresh_count = 15; // Refresh after 15 seconds
+      var refresh_count = 5; // Refresh after 5 seconds
       $('span#autorefresh_countdown').text(refresh_count);
       $.cookie('autorefresh', 'on', {'path': '/'});
 

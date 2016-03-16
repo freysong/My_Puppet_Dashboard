@@ -4,7 +4,7 @@ source 'http://ruby.taobao.org/'
 gem 'rake'                , '~> 0.9.3'
 gem 'rails'               , '~> 3.2'
 gem 'will_paginate'       , '~> 3.0'
-gem 'inherited_resources' , '1.4.0' # Pin this until they fix ruby 1.8.7 compat
+gem 'inherited_resources' , '1.4.0' # Pin this until they fix ruby 1.8.7 compatl
 gem 'i18n'                , '~> 0.6.0' # support ruby 1.8.7
 
 gem 'thin'
@@ -50,7 +50,7 @@ end
 
 #new
 gem 'slim-rails', '2.1.5' # provides slim generator, will load slim automatically
-#gem 'mcollective-client', '>= 2.8.4'
+gem 'mcollective-client', '>= 2.8.4'
 #gem 'mcollective-common', '~> 2.8', '>= 2.8.4'
 ##bootstrap
 #gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
